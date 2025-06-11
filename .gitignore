@@ -1,0 +1,18 @@
+# Ignore virtual environment
+hms_backend/venv/
+
+# Ignore environment files
+*.env
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore OS or editor-specific files
+.DS_Store
+Thumbs.db
