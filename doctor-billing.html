@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Billing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .billing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .billing-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .billing-header .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .billing-header .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .billing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .billing-table th, .billing-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .billing-table th {
+            background-color: #f4f6f9;
+        }
+
+        .billing-table td {
+            color: #555;
+        }
+
+        .billing-table .status {
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .billing-table .paid {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .billing-table .pending {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .billing-table .overdue {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .billing-table .action-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .billing-table .action-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .billing-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .billing-header .btn {
+                margin-top: 10px;
+            }
+
+            .billing-table th, .billing-table td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Manage Billing</h1>
+    </header>
+
+    <div class="container">
+        <div class="billing-header">
+            <h2>Billing Overview</h2>
+            <a href="generate-invoice.html" class="btn">Generate New Invoice</a>
+        </div>
+
+        <table class="billing-table">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Appointment Date</th>
+                    <th>Service Rendered</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Billing Row -->
+                <tr>
+                    <td>Amit</td>
+                    <td>10:00 AM, Jan 10</td>
+                    <td>General Checkup</td>
+                    <td>INR 100</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td>
+                        <button class="action-btn" onclick="markAsPaid()">Mark as Paid</button>
+                        <button class="action-btn" onclick="sendReminder()">Send Reminder</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lekha</td>
+                    <td>2:00 PM, Jan 12</td>
+                    <td>Blood Test</td>
+                    <td>INR 150</td>
+                    <td><span class="status paid">Paid</span></td>
+                    <td>
+                        <button class="action-btn" onclick="viewInvoice()">View Invoice</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sita</td>
+                    <td>4:00 PM, Jan 14</td>
+                    <td>Surgery</td>
+                    <td>INR 500</td>
+                    <td><span class="status overdue">Overdue</span></td>
+                    <td>
+                        <button class="action-btn" onclick="sendReminder()">Send Reminder</button>
+                        <button class="action-btn" onclick="markAsPaid()">Mark as Paid</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function markAsPaid() {
+            alert('Mark payment as paid functionality coming soon!');
+        }
+
+        function sendReminder() {
+            alert('Send reminder functionality coming soon!');
+        }
+
+        function viewInvoice() {
+            alert('View invoice functionality coming soon!');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Feedback - Hospital Management</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        /* Basic styles for the feedback page - you can integrate these into your main CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Matches patient dashboard background */
+        }
+        header {
+            background-color: #007bff; /* Matches patient dashboard header */
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px; /* Adjusted for feedback form */
+            margin: 20px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+            text-align: center;
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        textarea {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 150px;
+            font-size: 16px;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box; /* Include padding/border in width calculation */
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .feedback-results {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: none; /* Hidden by default */
+        }
+        .feedback-results p {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+        }
+        .feedback-results strong {
+            color: #333;
+        }
+        .error-message, .info-message {
+            color: red;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .info-message {
+            color: #007bff;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Patient Feedback</h1>
+    </header>
+    <div class="container">
+        <h2>Share Your Experience</h2>
+        <p>Your feedback helps us improve our services. Please tell us about your recent experience at the hospital.</p>
+
+        <form id="feedbackForm">
+            <label for="feedbackText">Your Feedback:</label>
+            <textarea id="feedbackText" placeholder="e.g., 'The doctors were very attentive and the facility was clean, but the wait time was too long.'" required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <div id="feedbackResults" class="feedback-results">
+            <h3>Analysis Results:</h3>
+            <p><strong>Sentiment:</strong> <span id="sentimentResult"></span></p>
+            <p><strong>Confidence:</strong> <span id="confidenceResult"></span></p>
+            <p><strong>Key Phrases:</strong> <span id="keyPhrasesResult"></span></p>
+        </div>
+        <p id="messageDisplay" class="info-message"></p>
+        <a href="patient-dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+    </div>
+
+    <script>
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackTextarea = document.getElementById('feedbackText');
+        const feedbackResultsDiv = document.getElementById('feedbackResults');
+        const sentimentResultSpan = document.getElementById('sentimentResult');
+        const confidenceResultSpan = document.getElementById('confidenceResult');
+        const keyPhrasesResultSpan = document.getElementById('keyPhrasesResult');
+        const messageDisplay = document.getElementById('messageDisplay'); // Unified message display
+
+        // IMPORTANT: This URL MUST match the address where your Python backend is running
+        const BACKEND_URL = 'http://127.0.0.1:5000/analyze-feedback'; 
+
+        feedbackForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Stop the form from reloading the page
+
+            const feedback = feedbackTextarea.value.trim();
+
+            if (!feedback) {
+                showMessage('Please enter some feedback.', 'error');
+                return;
+            }
+
+            // Reset and show loading message
+            feedbackResultsDiv.style.display = 'none';
+            showMessage('Analyzing feedback... Please wait.', 'info'); 
+
+            try {
+                const response = await fetch(BACKEND_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ feedback_text: feedback }),
+                });
+
+                if (!response.ok) {
+                    // Attempt to parse error message from backend
+                    const errorResponse = await response.json().catch(() => ({error: 'Unknown error'}));
+                    throw new Error(errorResponse.error || `HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json(); // Get the JSON response from your backend
+
+                // Display results
+                sentimentResultSpan.textContent = data.sentiment ? data.sentiment.toUpperCase() : 'N/A';
+
+                if (data.confidence_scores) {
+                    const { positive, neutral, negative } = data.confidence_scores;
+                    confidenceResultSpan.textContent = `Positive: ${(positive * 100).toFixed(2)}%, ` +
+                                                       `Neutral: ${(neutral * 100).toFixed(2)}%, ` +
+                                                       `Negative: ${(negative * 100).toFixed(2)}%`;
+                } else {
+                    confidenceResultSpan.textContent = 'N/A';
+                }
+
+                keyPhrasesResultSpan.textContent = data.key_phrases && data.key_phrases.length > 0
+                    ? data.key_phrases.join(', ')
+                    : 'No key phrases found.';
+
+                feedbackResultsDiv.style.display = 'block'; // Show the results div
+                showMessage('Feedback analyzed successfully!', 'success'); // Indicate success
+                feedbackTextarea.value = ''; // Clear the textarea after successful submission
+
+            } catch (error) {
+                console.error('Error submitting feedback:', error);
+                showMessage(`Error: ${error.message}. Is your backend server running?`, 'error');
+            }
+        });
+
+        // Function to display messages (error, info, success)
+        function showMessage(message, type) {
+            messageDisplay.textContent = message;
+            messageDisplay.style.display = 'block';
+            // Clear previous classes
+            messageDisplay.classList.remove('error-message', 'info-message', 'success-message'); 
+
+            if (type === 'error') {
+                messageDisplay.classList.add('error-message');
+                messageDisplay.style.color = 'red';
+            } else if (type === 'info') {
+                messageDisplay.classList.add('info-message');
+                messageDisplay.style.color = '#007bff'; // Blue for info
+            } else if (type === 'success') {
+                messageDisplay.classList.add('success-message');
+                messageDisplay.style.color = 'green';
+            } else {
+                messageDisplay.style.display = 'none'; // Hide if no message
+            }
+        }
+    </script>
+</body>
+</html>

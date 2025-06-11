@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor - Manage Appointments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .appointments-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        
+
+        .appointments-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .appointments-table th, .appointments-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .appointments-table th {
+            background-color: #f4f6f9;
+        }
+
+        .appointments-table td {
+            color: #555;
+        }
+
+        .appointments-table .status {
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .appointments-table .pending {
+            background-color: #ffc107;
+            color: white;
+        }
+
+        .appointments-table .confirmed {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .appointments-table .canceled {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .appointments-table .action-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .appointments-table .action-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
+            .appointments-header h2 {
+                font-size: 20px;
+            }
+
+            .appointments-table th, .appointments-table td {
+                padding: 8px;
+            }
+
+            .appointments-table .action-btn {
+                padding: 5px 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .appointments-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .appointments-header .btn {
+                margin-top: 10px;
+            }
+
+            .appointments-table th, .appointments-table td {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Manage Appointments</h1>
+    </header>
+
+    <div class="container">
+        <div class="appointments-header">
+            <h2>Upcoming Appointments</h2>
+            
+        </div>
+
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Appointment Time</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Appointment Row -->
+                <tr>
+                    <td>Amit</td>
+                    <td>10:00 AM, Jan 10</td>
+                    <td>General Checkup</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td>
+                        <button class="action-btn" onclick="editAppointment()">Edit</button>
+                        <button class="action-btn" onclick="cancelAppointment()">Cancel</button>
+                    </td>
+                </tr>
+                <!-- Appointment Row -->
+                <tr>
+                    <td>Lekha</td>
+                    <td>2:00 PM, Jan 10</td>
+                    <td>Consultation</td>
+                    <td><span class="status confirmed">Confirmed</span></td>
+                    <td>
+                        <button class="action-btn" onclick="editAppointment()">Edit</button>
+                        <button class="action-btn" onclick="cancelAppointment()">Cancel</button>
+                    </td>
+                </tr>
+                <!-- Appointment Row -->
+                <tr>
+                    <td>Amir</td>
+                    <td>11:30 AM, Jan 11</td>
+                    <td>Follow-up</td>
+                    <td><span class="status canceled">Canceled</span></td>
+                    <td>
+                        <button class="action-btn" onclick="editAppointment()">Edit</button>
+                        <button class="action-btn" onclick="cancelAppointment()">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function editAppointment() {
+            alert('Edit functionality coming soon!');
+        }
+
+        function cancelAppointment() {
+            alert('Cancel functionality coming soon!');
+        }
+    </script>
+
+</body>
+</html>

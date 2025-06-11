@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Scheduling</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BOOK APPOINTMENT</h1>
+            
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Schedule an Appointment</h2>
+
+        <form action="https://formspree.io/f/mldeopbp" method="POST">
+            <label for="patient-name">Patient Name</label>
+            <input type="text" id="patient-name" name="patient-name" placeholder="Enter your name" required>
+
+            <label for="patient-email">Patient Email</label>
+            <input type="email" id="patient-email" name="patient-email" placeholder="Enter your email" required>
+
+            <label for="doctor">Select Doctor</label>
+            <select id="doctor" name="doctor" required>
+                <option value="doctor1">Dr. John Doe - Cardiologist</option>
+                <option value="doctor2">Dr. Jane Smith - Dermatologist</option>
+                <option value="doctor3">Dr. Richard Roe - Orthopedic</option>
+                <option value="doctor4">Dr. Emily White - Pediatrician</option>
+            </select>
+
+            <label for="appointment-date">Select Date</label>
+            <input type="date" id="appointment-date" name="appointment-date" required>
+
+            <label for="appointment-time">Select Time</label>
+            <input type="time" id="appointment-time" name="appointment-time" required>
+
+            <label for="message">Additional Message (Optional)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter any special requests or concerns"></textarea>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

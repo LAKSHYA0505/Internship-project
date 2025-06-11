@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Patient Management</h2>
+        <p>
+            The Patient Management module is a key feature of the Hospital Management System. It enables healthcare providers 
+            to manage patient records efficiently and securely. With this system, you can:
+        </p>
+        <ul>
+            <li>Store and access patient demographics, medical history, and reports.</li>
+            <li>Track ongoing treatments and prescriptions.</li>
+            <li>Monitor patient appointments and follow-ups.</li>
+            <li>Ensure data privacy and security.</li>
+        </ul>
+
+        <h3>Sample Patient Records</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Condition</th>
+                    <th>Last Visit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>P001</td>
+                    <td>John Doe</td>
+                    <td>35</td>
+                    <td>Diabetes</td>
+                    <td>2024-11-15</td>
+                </tr>
+                <tr>
+                    <td>P002</td>
+                    <td>Jane Smith</td>
+                    <td>28</td>
+                    <td>Asthma</td>
+                    <td>2024-10-30</td>
+                </tr>
+                <tr>
+                    <td>P003</td>
+                    <td>Michael Johnson</td>
+                    <td>42</td>
+                    <td>Hypertension</td>
+                    <td>2024-11-10</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Add New Patient</h3>
+        <form>
+            <label for="patientName">Patient Name</label>
+            <input type="text" id="patientName" name="patientName" placeholder="Enter patient name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Enter patient age" required>
+
+            <label for="condition">Condition</label>
+            <input type="text" id="condition" name="condition" placeholder="Enter medical condition" required>
+
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" rows="4" placeholder="Add any additional information"></textarea>
+
+            <button type="submit">Add Patient</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

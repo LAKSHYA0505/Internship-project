@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receptionist Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #f3f4f6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            background: #e2e6ea;
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Receptionist Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="dashboard-grid">
+            <!-- Handle Appointments -->
+            <div class="card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Manage Appointments</h3>
+                <p>Schedule, reschedule, or cancel patient appointments easily.</p>
+                <a href="receptionist-appointments.html">Manage Appointments</a>
+            </div>
+            <!-- Patient Check-ins -->
+            <div class="card">
+                <i class="fas fa-user-check"></i>
+                <h3>Patient Check-ins</h3>
+                <p>Mark patients as checked-in and verify their details.</p>
+                <a href="check-ins.html">View Check-ins</a>
+            </div>
+            <!-- Assist with Billing -->
+            <div class="card">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h3>Billing</h3>
+                <p>Generate and provide bills for patients.</p>
+                <a href="receptionist-billing.html">Manage Billing</a>
+            </div>
+            <!-- Handle Inquiries -->
+            <div class="card">
+                <i class="fas fa-question-circle"></i>
+                <h3>Patient Inquiries</h3>
+                <p>Address questions regarding appointments and doctor availability.</p>
+                <a href="inquiries.html">Answer Inquiries</a>
+            </div>
+            <!-- Maintain Communication -->
+            <div class="card">
+                <i class="fas fa-comments"></i>
+                <h3>Communication</h3>
+                <p>Relay feedback or concerns to admin and notify doctors of schedule changes.</p>
+                <a href="communication.html">Manage Communication</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

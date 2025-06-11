@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+        
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        header .login-btn {
+            background-color: #fff;
+            color: #007bff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+
+        header .login-btn:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .hero {
+            background-image:url(mi.webp); 
+            background-size: cover;
+            color: black;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .cta-btn {
+            background-color: #007bff;
+            padding: 15px 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+
+        .cta-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .features, .services {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .features h2, .services h2 {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features .feature, .services .service {
+            display: inline-block;
+            width: 250px;
+            margin: 0 20px;
+            text-align: center;
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .features .feature i, .services .service i {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Hospital Management</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#features">Features</a>
+        </nav>
+        <a href="login.html" class="login-btn">Login</a>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Our Hospital Management System</h1>
+        <p>Book appointments, manage your health records, and experience quality healthcare with ease</p>
+        <a href="patient-appointment.html" class="cta-btn">Book an Appointment</a>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Our Key Features</h2>
+        <div class="feature">
+            <i class="fas fa-calendar-alt"></i>
+            <h3>Appointment Booking</h3>
+            <p>Schedule and manage your appointments seamlessly.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-file-medical"></i>
+            <h3>Medical Records</h3>
+            <p>Access and update your health records easily.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-stethoscope"></i>
+            <h3>Consult with Doctors</h3>
+            <p>Get professional consultations anytime, anywhere.</p>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="service">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Cardiology</h3>
+            <p>Expert care for heart-related conditions.</p>
+        </div>
+        <div class="service">
+            <i class="fas fa-child"></i>
+            <h3>Pediatrics</h3>
+            <p>Caring for the health of your little ones.</p>
+        </div>
+        <div class="service">
+            <i class="fas fa-hospital"></i>
+            <h3>Emergency Services</h3>
+            <p>24/7 emergency care when you need it the most.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Hospital Management System. All Rights Reserved.</p>
+        <a href="contact-us.html">Contact Us</a> | <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+</body>
+</html>

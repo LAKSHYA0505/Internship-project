@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Appointments</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .appointment-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .appointment-actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .appointment-actions button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-container input, .form-container select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            margin: 10px 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-actions button {
+                width: 45%;
+                font-size: 14px;
+            }
+
+            table th, table td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .form-container input, .form-container select, .form-container button {
+                width: calc(100% - 20px);
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Appointments</h1>
+
+        <div class="appointment-actions">
+            <button onclick="showForm('add')">Add Appointment</button>
+            <button onclick="filterAppointments()">Search & Filter</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Amit</td>
+                    <td>Dr. Smith</td>
+                    <td>2024-01-08</td>
+                    <td>10:00 AM</td>
+                    <td>Scheduled</td>
+                    <td>
+                        <button onclick="editAppointment()">Edit</button>
+                        <button onclick="cancelAppointment()">Cancel</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lekha</td>
+                    <td>Dr. Patel</td>
+                    <td>2024-01-09</td>
+                    <td>2:00 PM</td>
+                    <td>Scheduled</td>
+                    <td>
+                        <button onclick="editAppointment()">Edit</button>
+                        <button onclick="cancelAppointment()">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="form-container" id="form-container">
+            <h2>Add/Edit Appointment</h2>
+            <input type="text" placeholder="Patient Name">
+            <select>
+                <option value="" disabled selected>Select Doctor</option>
+                <option value="Dr. Smith">Dr. Smith</option>
+                <option value="Dr. Patel">Dr. Patel</option>
+            </select>
+            <input type="date">
+            <input type="time">
+            <button>Save Appointment</button>
+        </div>
+    </div>
+
+    <script>
+        function showForm(action) {
+            document.getElementById('form-container').style.display = 'block';
+        }
+
+        function filterAppointments() {
+            alert('Filter functionality coming soon!');
+        }
+
+        function editAppointment() {
+            alert('Edit functionality coming soon!');
+        }
+
+        function cancelAppointment() {
+            alert('Cancel functionality coming soon!');
+        }
+    </script>
+</body>
+</html>

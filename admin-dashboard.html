@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hospital Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset default margins and paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background-color: #007bff;
+            color: white;
+            padding: 30px;
+            box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #ffd700;
+        }
+
+        /* Sidebar Collapse Button (on smaller screens) */
+        .sidebar-toggle {
+            display: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 18px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 270px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        header h1 {
+            font-size: 26px;
+            color: #007bff;
+        }
+
+        /* Dashboard Overview */
+        .overview {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .overview .card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 23%;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .overview .card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .overview .card p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .overview .card .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .overview .card .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Manage Patients, Appointments, Billing Section */
+        .section-title {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            color: #007bff;
+        }
+
+        .table-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container th, .table-container td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table-container th {
+            background-color: #f9f9f9;
+        }
+
+        .table-container td {
+            color: #555;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .overview .card {
+                width: 48%;
+            }
+
+            .sidebar {
+                width: 200px;
+                transform: translateX(-250px);
+                position: fixed;
+                transition: all 0.3s;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overview .card {
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: relative;
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Patient Management</a>
+        <a href="#">Appointment Management</a>
+        <a href="#">Billing</a>
+        <a href="#">Staff Management</a>
+        <a href="#">Reports</a>
+        <a href="#">Inventory</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <h1>Hospital Admin Dashboard</h1>
+        </header>
+
+        <!-- Overview Section -->
+        <div class="overview">
+            <div class="card">
+                <h3>100</h3>
+                <p>Patients</p>
+                <a href="#" class="btn">View Patients</a>
+            </div>
+            <div class="card">
+                <h3>50</h3>
+                <p>Appointments</p>
+                <a href="#" class="btn">Manage Appointments</a>
+            </div>
+            <div class="card">
+                <h3>INR 5L</h3>
+                <p>Income</p>
+                <a href="#" class="btn">View Billing</a>
+            </div>
+            <div class="card">
+                <h3>20</h3>
+                <p>Doctors</p>
+                <a href="#" class="btn">View Doctors</a>
+            </div>
+        </div>
+
+        <!-- Manage Patients -->
+        <div class="section-title">Patient Management</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Appointment Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amit</td>
+                        <td>34</td>
+                        <td>Male</td>
+                        <td>Jan 10, 2025</td>
+                        <td>Scheduled</td>
+                    </tr>
+                    <tr>
+                        <td>Lekha</td>
+                        <td>29</td>
+                        <td>Female</td>
+                        <td>Jan 11, 2025</td>
+                        <td>Scheduled</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Manage Appointments -->
+        <div class="section-title">Appointment Management</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Doctor</th>
+                        <th>Appointment Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amit</td>
+                        <td>Dr. Sita</td>
+                        <td>Jan 10, 2025</td>
+                        <td>Confirmed</td>
+                        <td><button class="btn">Reschedule</button> <button class="btn">Cancel</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Billing -->
+        <div class="section-title">Billing</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amit</td>
+                        <td>$100</td>
+                        <td><span style="color: green;">Paid</span></td>
+                        <td><button class="btn">View Invoice</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Function -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
