@@ -99,16 +99,20 @@ Follow these steps to get the project running on your local machine:
     ```
     Keep this terminal window open. You should see output indicating that the server is running on `http://127.0.0.1:5000`.
 
-7.  **Access the Frontend:**
-    * Open your web browser.
-    * Navigate back to the root of the project directory (e.g., `C:\Users\Lakshya\onedrive\desktop\mini_project`).
-    * Double-click `patient-dashboard.html` to open it in your browser.
-    * From the dashboard, click on the "Give Feedback" card to go to `patient-feedback.html`.
+7.  **Access the Frontend and Test AI Feature:**
+    Follow these steps to experience the AI-powered feedback analysis:
 
-8.  **Test the Feedback Analysis:**
-    * On the `patient-feedback.html` page, enter some text into the feedback area.
-    * Click "Submit Feedback".
-    * The "Analysis Results" section should populate with the sentiment, confidence scores, and key phrases returned from your running Flask backend (which communicates with Azure AI).
-    * You should also see activity in the terminal window where your Flask server is running.
+    * Open your web browser and navigate to the root of your project (e.g., by double-clicking `index.html` or `patient-dashboard.html` in your file explorer).
+    * **Login to the System:** Click on the 'Login' button in the top right corner of the homepage.
+        ![Screenshot of the home page with Login button highlighted](images/homepage_login.png)
+    * **Select Patient Login:** On the login role selection page, click on 'Patient Login'.
+        ![Screenshot of the login selection page with Patient Login button highlighted](images/patient_login.png)
+    * **Navigate to Feedback:** From the Patient Dashboard, locate the "Give Feedback" card and click the 'Share Feedback' button.
+        ![Screenshot of the Patient Dashboard with Share Feedback button highlighted](images/give_feedback.png)
+    * **Enter Your Feedback:** You will be directed to the Patient Feedback page. Type your feedback into the designated text area.
+        ![Screenshot of the Patient Feedback form with text area highlighted](images/feedback_form.png)
+    * **Submit and View Analysis:** Click the "Submit Feedback" button. The "Analysis Results" section will appear below, displaying the sentiment (Positive, Negative, Neutral, Mixed), confidence scores, and key phrases identified by Azure AI Language.
+        **_Remember to capture a screenshot of this part after submitting feedback and save it as `images/analysis_results.png`!_**
+        ![Screenshot of the Patient Feedback page showing analysis results after submission](images/analysis_results.png)
 
 ## Project Structure
