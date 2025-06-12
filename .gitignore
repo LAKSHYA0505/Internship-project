@@ -1,11 +1,11 @@
 # Ignore virtual environment
-*hms_backend/venv/
+hms_backend/venv/
 
 # Ignore environment files
 *.env
 
 # Ignore VSCode settings
-*.vscode/
+.vscode/
 
 # Ignore Python bytecode files
 __pycache__/
